@@ -254,20 +254,20 @@
     const hearts = document.getElementById('hearts');
     const random = (min,max)=>Math.random()*(max-min)+min;
 
-    // Create stars
+    
     for(let i=0;i<160;i++){
       const s = document.createElement('div'); s.className='star';
       s.style.top = random(0,100)+'%'; s.style.left = random(0,100)+'%';
       s.style.animationDuration = random(2,7)+'s'; stars.appendChild(s);
     }
-    // Emit sparkles periodically
+    
     setInterval(()=>{
       const sp = document.createElement('div'); sp.className='sparkle';
       sp.style.left = random(0,100)+'vw'; sp.style.top = '100vh';
       sp.style.animationDuration = random(8,14)+'s';
       sparkles.appendChild(sp); setTimeout(()=>sp.remove(),15000);
     }, 600);
-    // Emit floating hearts
+    
     setInterval(()=>{
       const h = document.createElement('div'); h.className='heart';
       h.style.left = random(0,100)+'vw'; h.style.bottom = '-20px';
@@ -275,7 +275,7 @@
       hearts.appendChild(h); setTimeout(()=>h.remove(),14000);
     }, 800);
 
-    // Parallax effect on hero content
+    
     const hero = document.getElementById('heroParallax');
     window.addEventListener('mousemove', (e)=>{
       const x = (e.clientX / window.innerWidth - .5) * 10;
@@ -286,9 +286,7 @@
       const sc = window.scrollY; hero.style.transform = `translate3d(0, ${Math.min(sc*0.06, 24)}px, 0)`;
     }, {passive:true});
 
-    /* =====================================================
-       Reveal-on-scroll animations
-       ===================================================== */
+    
     const io = new IntersectionObserver((entries)=>{
       entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target); } });
     }, {threshold:.15});
