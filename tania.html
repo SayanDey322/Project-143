@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>My Love Tania I love you so much</title>
+  <meta name="description" content="A dreamy, animated one‑page website gift with parallax, sparkles, gallery, quotes, and music." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#090312;
+      --bg2:#150b2a;
+      --grad1:#ff7eb9;   
+      --grad2:#8b5cf6;   
+      --grad3:#facc15;   
+      --text:#ffffff;
+      --muted:#d3cdea;
+      --glass: rgba(255,255,255,.08);
+      --border: rgba(255,255,255,.14);
+      --shadow: 0 12px 40px rgba(0,0,0,.55);
+      --radius: 26px;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{height:100%}
+    body{
+      font-family:Poppins, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      color:var(--text);
+      background:
+        radial-gradient(1200px 800px at 80% -10%, #2a1750 0%, transparent 60%),
+        radial-gradient(1000px 600px at -10% 10%, #1d1236 0%, transparent 60%),
+        linear-gradient(180deg, var(--bg2), var(--bg));
+      overflow-x:hidden;
+      scroll-behavior:smooth;
+    }
+
+    
+    .layer{position:fixed;inset:0;pointer-events:none;z-index:0}
+    .stars, .sparkles, .hearts{position:absolute;inset:0}
+    .star,.sparkle,.heart{position:absolute;will-change:transform, opacity}
+
+    .star{width:2px;height:2px;background:#fff;border-radius:50%;opacity:.6;animation:twinkle 6s ease-in-out infinite}
+    @keyframes twinkle{0%,100%{opacity:.25}50%{opacity:1}}
+
+    .sparkle{width:3px;height:3px;background:linear-gradient(90deg,var(--grad1),var(--grad2));border-radius:50%;opacity:.75;filter:drop-shadow(0 0 6px rgba(255,126,185,.9));animation:float 12s linear infinite}
+    @keyframes float{from{transform:translateY(0)}to{transform:translateY(-110vh)}}
+
+    .heart::before{content:"❤";font-size:16px;opacity:.45;filter:drop-shadow(0 0 6px rgba(255,126,185,.6))}
+    .heart{animation:rise 10s linear forwards}
+    @keyframes rise{from{transform:translateY(0) scale(1)}to{transform:translateY(-120vh) scale(1.6);opacity:0}}
+
+    
+    .topnav{
+      position:fixed;top:18px;left:50%;transform:translateX(-50%);
+      z-index:10;display:flex;gap:4px;align-items:center;
+      background:rgba(20,12,40,.5);backdrop-filter:blur(12px);
+      border:1px solid var(--border);border-radius:999px;box-shadow:var(--shadow);
+      padding:8px 10px
+    }
+    .topnav a{display:inline-block;padding:10px 14px;border-radius:999px;text-decoration:none;color:var(--muted);font-weight:600;transition:background .25s, color .25s}
+    .topnav a:hover{background:rgba(255,255,255,.08);color:var(--text)}
+
+    
+    header.hero{position:relative;z-index:1;min-height:100svh;display:grid;place-items:center;text-align:center;padding:90px 20px}
+    .hero-inner{display:grid;gap:18px;place-items:center;max-width:900px}
+    .badge{display:inline-grid;place-items:center;padding:8px 14px;border-radius:999px;font-weight:700;letter-spacing:.4px;background:linear-gradient(90deg,var(--grad1),var(--grad2));color:#1b0f2e;box-shadow:0 0 18px rgba(139,92,246,.6)}
+    h1.title{font-family:'Great Vibes',cursive;font-size:clamp(56px,9vw,110px);line-height:1.05;margin:6px 0;background:linear-gradient(90deg,var(--grad1),var(--grad2),var(--grad3));-webkit-background-clip:text;background-clip:text;color:transparent;animation:shine 8s linear infinite}
+    @keyframes shine{0%{filter:drop-shadow(0 0 0 rgba(255,255,255,0))}50%{filter:drop-shadow(0 0 14px rgba(255,255,255,.15))}100%{filter:drop-shadow(0 0 0 rgba(255,255,255,0))}}
+    .subtitle{max-width:760px;color:var(--muted);font-size:clamp(16px,2.4vw,19px)}
+    .cta{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin-top:10px}
+    .btn{border:none;border-radius:999px;padding:13px 20px;font-weight:700;cursor:pointer;transition:transform .15s ease, box-shadow .3s ease}
+    .btn-primary{background:linear-gradient(90deg,var(--grad1),var(--grad2));color:#160e28;box-shadow:0 0 22px rgba(139,92,246,.75)}
+    .btn-ghost{background:rgba(255,255,255,.06);border:1px solid var(--border);color:var(--text);backdrop-filter:blur(8px)}
+    .btn:hover{transform:translateY(-3px) scale(1.03)}
+    .btn-primary.pulse{animation:pulse 2.4s infinite}
+    @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(139,92,246,.7)}70%{box-shadow:0 0 0 20px rgba(139,92,246,0)}100%{box-shadow:0 0 0 0 rgba(139,92,246,0)}}
+
+    
+    section{position:relative;z-index:1;padding:90px 20px}
+    .container{max-width:1100px;margin:0 auto}
+    .section-title{font-family:'Great Vibes',cursive;font-size:clamp(42px,5.6vw,64px);text-align:center;margin-bottom:50px;background:linear-gradient(90deg,var(--grad1),var(--grad2));-webkit-background-clip:text;background-clip:text;color:transparent}
+    .section-title::after{content:"";display:block;height:4px;width:min(360px,70%);margin:12px auto 0;background:linear-gradient(90deg,var(--grad1),var(--grad2),var(--grad3));border-radius:12px;animation:glowline 3s infinite}
+    @keyframes glowline{0%,100%{box-shadow:0 0 10px var(--grad1)}50%{box-shadow:0 0 18px var(--grad2)}}
+
+    .card{background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.05));border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);backdrop-filter:blur(12px);padding:26px}
+
+    
+    .timeline{position:relative;margin:0 auto;max-width:980px}
+    .timeline::before{content:"";position:absolute;left:calc(50% - 2px);top:0;bottom:0;width:4px;background:linear-gradient(var(--grad1),var(--grad2));border-radius:6px;opacity:.75}
+    .t-item{position:relative;width:46%;background:rgba(255,255,255,.06);border:1px solid var(--border);border-radius:18px;padding:18px 18px;margin:28px 0;box-shadow:var(--shadow)}
+    .t-item:nth-child(odd){margin-left:0}
+    .t-item:nth-child(even){margin-left:auto}
+    .t-item .date{font-weight:800;color:var(--grad3);letter-spacing:.3px;margin-bottom:6px}
+
+    
+    .gallery{display:grid;grid-template-columns:repeat(12,1fr);gap:18px}
+    .photo{grid-column:span 12;border-radius:22px;overflow:hidden;position:relative;cursor:pointer;background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.02));border:1px solid var(--border);transition:transform .35s, box-shadow .35s, border .4s}
+    .photo img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s}
+    .photo::before{content:"";position:absolute;inset:0;border-radius:22px;padding:1px;background:linear-gradient(120deg,transparent,rgba(255,255,255,.2),transparent);-webkit-mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);-webkit-mask-composite: xor;mask-composite: exclude;opacity:.35}
+    .photo::after{content:attr(data-caption);position:absolute;left:12px;bottom:12px;padding:6px 12px;border-radius:12px;background:rgba(0,0,0,.5);font-size:13px;opacity:0;transition:opacity .35s}
+    .photo:hover{transform:translateY(-6px) scale(1.02);box-shadow:0 18px 40px rgba(0,0,0,.45);border-color:transparent}
+    .photo:hover img{transform:scale(1.08) rotate(.5deg)}
+    .photo:hover::after{opacity:1}
+    @media(min-width:700px){.photo{grid-column:span 6;min-height:240px}}
+    @media(min-width:1000px){.photo{grid-column:span 4;min-height:260px}}
+
+    
+    blockquote{margin:0;font-size:clamp(18px,3.3vw,22px);line-height:1.7;color:var(--muted);font-style:italic}
+    blockquote strong{color:#fff}
+
+    
+    footer{padding:70px 20px;text-align:center;color:var(--muted)}
+
+    
+    .reveal{opacity:0;transform:translateY(18px) scale(.98);transition:opacity .7s ease, transform .7s ease}
+    .reveal.visible{opacity:1;transform:none}
+
+    
+    .music-btn{position:fixed;right:20px;bottom:22px;z-index:12;border:none;border-radius:999px;padding:14px 16px;font-weight:800;background:linear-gradient(90deg,var(--grad1),var(--grad2));color:#1a102d;box-shadow:0 0 20px rgba(139,92,246,.8);cursor:pointer;display:flex;align-items:center;gap:10px}
+    .music-btn span{font-size:13px}
+  </style>
+</head>
+<body>
+  
+  <div class="layer">
+    <div class="stars" id="stars"></div>
+    <div class="sparkles" id="sparkles"></div>
+    <div class="hearts" id="hearts"></div>
+  </div>
+
+  
+  <nav class="topnav">
+    <a href="#home">Home</a>
+    <a href="#story">Story</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#notes">Notes</a>
+    <a href="#music">Music</a>
+  </nav>
+
+  
+  <header class="hero container" id="home">
+    <div class="hero-inner reveal visible" id="heroParallax">
+      <span class="badge">A little website made just for you</span>
+      <h1 class="title">For Tania</h1>
+      <p class="subtitle">A dreamy corner of the internet dedicated to us — moments, laughs and forever days. Scroll and let the stars tell our story.</p>
+      <div class="cta">
+        <button class="btn btn-primary pulse" onclick="document.getElementById('story').scrollIntoView({behavior:'smooth'})">Read Our Story</button>
+        <button class="btn btn-ghost" onclick="document.getElementById('gallery').scrollIntoView({behavior:'smooth'})">Open Gallery</button>
+      </div>
+    </div>
+  </header>
+
+  
+  <section class="container" id="story">
+    <h2 class="section-title reveal">Our Journey</h2>
+    <div class="timeline">
+      <div class="t-item reveal">
+        <div class="date">Aug 29, 2024</div>
+        <div>That first hello — and suddenly, the world felt softer.</div>
+      </div>
+      <div class="t-item reveal">
+        <div class="date">Nov 9, 2024</div>
+        <div>Our first date as bestfriends where we went to CC mall</div>
+      </div>
+      <div class="t-item reveal">
+        <div class="date">Dec 5, 2024</div>
+        <div>We proposed each other in the gardens of Iskon Temple in the evening twilight. The best moment of my life.</div>
+      </div>
+      <div class="t-item reveal">
+        <div class="date">Feb 2, 2025</div>
+        <div>Our first Saraswati Puja together where we slayed and she was looking so so pretty literally.</div>
+      </div>
+      <div class="t-item reveal">
+        <div class="date">Feb 14, 2025</div>
+        <div>Valentines Day, we gave gifts to each other and spent beautiful time at Riverside.</div>
+      </div>
+      <div class="t-item reveal">
+        <div class="date">Mar 2, 2025</div>
+        <div>My 20th birthday, the best birthday of my life with her and it was the most memorable one. I love you.</div>
+      </div>
+      <div class="t-item reveal">
+        <div class="date">Mar 13, 2025</div>
+        <div>We went to Victoria Memorial together, hand in hand, loving and adoring each other.</div>
+      </div>
+      <div class="t-item reveal">
+        <div class="date">May 25, 2025</div>
+        <div>Our first movie date, which was Final Destination - Bloodline.</div>
+      </div>
+      <div class="t-item reveal">
+        <div class="date">Aug 29, 2025</div>
+        <div>Her 20th birthday, my cutie's birthday and it was so so special. I love you so much baby.</div>
+      </div>
+      <div class="t-item reveal">
+        <div class="date">Now</div>
+        <div>Just falling in love with her again and again. I am so lucky to have you in my life my Tania.</div>
+      </div>
+    </div>
+  </section>
+
+  
+  <section class="container" id="gallery">
+    <h2 class="section-title reveal">Gallery</h2>
+    <div class="gallery">
+      
+      <figure class="photo reveal"><img src="tania1.jpg" alt="Photo 1"></figure>
+      <figure class="photo reveal" data-caption="Laughter"><img src="tania2.jpg" alt="Photo 2"></figure>
+      <figure class="photo reveal" data-caption="Together"><img src="tania3.jpg" alt="Photo 3"></figure>
+      <figure class="photo reveal" data-caption="Adventure"><img src="tania4.jpg" alt="Photo 4"></figure>
+      <figure class="photo reveal" data-caption="Golden Hour"><img src="tania5.jpg" alt="Photo 5"></figure>
+      <figure class="photo reveal" data-caption="Candid Chaos"><img src="tania6.jpg" alt="Photo 6"></figure>
+      <figure class="photo reveal" data-caption="Candid Chaos"><img src="tania7.jpg" alt="Photo 7"></figure>
+      <figure class="photo reveal" data-caption="Candid Chaos"><img src="tania8.jpg" alt="Photo 8"></figure>
+      <figure class="photo reveal" data-caption="Candid Chaos"><img src="tania9.jpg" alt="Photo 9"></figure>
+      <figure class="photo reveal" data-caption="Candid Chaos"><img src="tania10.jpg" alt="Photo 10"></figure>
+      <figure class="photo reveal" data-caption="Candid Chaos"><img src="tania11.jpg" alt="Photo 11"></figure>
+      <figure class="photo reveal" data-caption="Candid Chaos"><img src="tania12.jpg" alt="Photo 12"></figure>
+    </div>
+  </section>
+
+  
+  <section class="container" id="notes">
+    <h2 class="section-title reveal">Little Notes</h2>
+    <div class="card reveal">
+      <blockquote>Ami tomar pagle lej kata bandor aar tumi amr cutie pyaari tehni. Ami jani ki ami onk paglami kori majhe majhe love but ami tomake onk onk bhalobashi go amr sonu. Tumi hi amr jibon boto, amr happy place boto, amr cutie pie boto, amr dhadkan boto, amr duniya boto. Amr sobkichu tumi acho love. Ami ai jonom hi naa sob jonom tumar aar tumi sudhu amr amr amr amr.<strong>You are my favorite chapter. I love you so so much my love my Tania ❤️</strong></blockquote>
+    </div>
+  </section>
+
+  
+  <section class="container" id="music">
+    <h2 class="section-title reveal">Our Song</h2>
+    <div class="card reveal" style="overflow:hidden">
+      <iframe style="border-radius:16px" src="https://open.spotify.com/embed/track/7kvLAPEnEPlSbhZDlHFv0p?utm_source=generator" width="100%" height="152" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture"></iframe>
+    </div>
+  </section>
+
+  <footer class="container">
+    <p style="opacity:.9">Made with ❤️ by Sayon for Tania</p>
+    <p style="font-size:12px;opacity:.7">I love you till eternity my love</p>
+  </footer>
+
+  
+  <button class="music-btn" id="musicBtn" aria-pressed="false" title="Play/pause background music">
+    <span id="musicIcon">▶</span>
+    <span>Play Music</span>
+  </button>
+  <audio id="bgm" loop preload="auto">
+    <source src="https://cdn.pixabay.com/download/audio/2021/09/30/audio_0e0a5a2453.mp3?filename=romantic-melody-117997.mp3" type="audio/mpeg" />
+  </audio>
+
+  <script>
+    const stars = document.getElementById('stars');
+    const sparkles = document.getElementById('sparkles');
+    const hearts = document.getElementById('hearts');
+    const random = (min,max)=>Math.random()*(max-min)+min;
+
+    // Create stars
+    for(let i=0;i<160;i++){
+      const s = document.createElement('div'); s.className='star';
+      s.style.top = random(0,100)+'%'; s.style.left = random(0,100)+'%';
+      s.style.animationDuration = random(2,7)+'s'; stars.appendChild(s);
+    }
+    // Emit sparkles periodically
+    setInterval(()=>{
+      const sp = document.createElement('div'); sp.className='sparkle';
+      sp.style.left = random(0,100)+'vw'; sp.style.top = '100vh';
+      sp.style.animationDuration = random(8,14)+'s';
+      sparkles.appendChild(sp); setTimeout(()=>sp.remove(),15000);
+    }, 600);
+    // Emit floating hearts
+    setInterval(()=>{
+      const h = document.createElement('div'); h.className='heart';
+      h.style.left = random(0,100)+'vw'; h.style.bottom = '-20px';
+      h.style.animationDuration = random(8,14)+'s';
+      hearts.appendChild(h); setTimeout(()=>h.remove(),14000);
+    }, 800);
+
+    // Parallax effect on hero content
+    const hero = document.getElementById('heroParallax');
+    window.addEventListener('mousemove', (e)=>{
+      const x = (e.clientX / window.innerWidth - .5) * 10;
+      const y = (e.clientY / window.innerHeight - .5) * 10;
+      hero.style.transform = `translate3d(${x}px, ${y}px, 0)`;
+    });
+    window.addEventListener('scroll', ()=>{
+      const sc = window.scrollY; hero.style.transform = `translate3d(0, ${Math.min(sc*0.06, 24)}px, 0)`;
+    }, {passive:true});
+
+    /* =====================================================
+       Reveal-on-scroll animations
+       ===================================================== */
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target); } });
+    }, {threshold:.15});
+    document.querySelectorAll('.reveal').forEach(el=>{ if(!el.classList.contains('visible')) io.observe(el); });
+
+    const musicBtn = document.getElementById('musicBtn');
+    const musicIcon = document.getElementById('musicIcon');
+    const bgm = document.getElementById('bgm');
+    let playing = false;
+    const updateBtn = ()=>{
+      musicIcon.textContent = playing ? '⏸' : '▶';
+      musicBtn.querySelector('span:last-child').textContent = playing ? 'Pause Music' : 'Play Music';
+      musicBtn.setAttribute('aria-pressed', playing);
+    }
+    musicBtn.addEventListener('click', async ()=>{ async 
+      try{
+        if(!playing){ await bgm.play(); playing = true; }
+        else{ bgm.pause(); playing = false; }
+        updateBtn();
+      }catch(err){ console.warn('Autoplay blocked — user interaction needed', err); }
+    });
+
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', (e)=>{
+        const id = a.getAttribute('href').slice(1);
+        const el = document.getElementById(id);
+        if(el){ e.preventDefault(); el.scrollIntoView({behavior:'smooth'}); }
+      });
+    });
+  </script>
+</body>
+</html>
